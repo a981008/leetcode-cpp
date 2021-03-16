@@ -9,7 +9,6 @@
 // @lc code=start
 class Solution {
 public:
-
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         int tot = nums1.size() + nums2.size();
         if (tot % 2 == 0) {

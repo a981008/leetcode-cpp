@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=10 lang=cpp
  *
  * [10] 正则表达式匹配
+ * 
+ * 完全背包优化
  */
 
 // @lc code=start
