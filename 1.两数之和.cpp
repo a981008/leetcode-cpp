@@ -18,7 +18,6 @@ public:
             } else {
                 map[nums[i]] = i;
             }
-            /* code */
         }
         return {-1, -1};
     }
