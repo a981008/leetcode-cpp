@@ -1,9 +1,7 @@
 /*
- * @lc app=leetcode.cn id=19 lang=cpp
+ * @lc app=leetcode.cn id=24 lang=cpp
  *
- * [19] 删除链表的倒数第 N 个结点
- * 
- * 头节点需要变化或需要额外判定，可以使用虚拟头节点
+ * [24] 两两交换链表中的节点
  */
 
 // @lc code=start
@@ -19,16 +17,17 @@
  */
 class Solution {
 public:
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
+    ListNode* swapPairs(ListNode* head) {
         auto dummy = new ListNode();
         dummy->next = head;
-        auto *fast = dummy, *slow = dummy;
-        while (n--) fast = fast->next;
-        while (fast->next) {
-            fast = fast->next;
-            slow = slow->next;
+        auto p = dummy;
+        while (p->next && p->next->next) {
+            auto a = p->next, b = p->next->next;
+            p->next = b;
+            a->next = b->next;
+            b->next = a;
+            p = a;
         }
-        slow->next = slow->next->next;
         return dummy->next;
     }
 };
