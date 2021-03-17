@@ -1,9 +1,7 @@
 /*
- * @lc app=leetcode.cn id=10 lang=cpp
+ * @lc app=leetcode.cn id=44 lang=cpp
  *
- * [10] 正则表达式匹配
- * 
- * 完全背包优化
+ * [44] 通配符匹配
  */
 
 // @lc code=start
@@ -17,12 +15,10 @@ public:
         for (int i = 0; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
                 if (p[j] == '*') {
-                    f[i][j] = f[i][j - 2] 
-                    || i && f[i - 1][j] 
-                    && (s[i] == p[j - 1] || p[j-1] == '.');
+                    f[i][j] = f[i][j - 1] || i && f[i - 1][j];
                 } else {
                     f[i][j] = i && f[i - 1][j - 1] 
-                    && (s[i] == p[j] || p[j] == '.');
+                    && (s[i] == p[j] || p[j] == '?');
                 }
             }
         }
