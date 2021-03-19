@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "string": "cpp",
+        "iosfwd": "cpp",
+        "vector": "cpp",
+        "iterator": "cpp",
+        "__split_buffer": "cpp",
+        "ostream": "cpp"
+    }
+}
