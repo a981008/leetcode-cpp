@@ -16,12 +16,14 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
+    // 二叉搜索树中序遍历是升序
     bool isValidBST(TreeNode* root) {
         return dfs(root);
     }
-    long pre = LONG_MIN;
+    long pre = LLONG_MIN;
     bool dfs(TreeNode* root) {
         if (root == nullptr) return true;
         bool left = dfs(root->left);
