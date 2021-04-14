@@ -29,56 +29,36 @@ public:
      * 
      * 如何空间复杂度降到 O(1)，Morris 遍历
      */
-    // void recoverTree(TreeNode* root) {
-    //     TreeNode *first = nullptr, *second, *prep = nullptr;
-    //     while (root) {
-    //         if (!root->left) {
-    //             if (prep && prep->val > root->val) {
-    //                 if (!first) first = prep, second = root;
-    //                 else second = root;
-    //             }
-    //             prep = root;
-    //             root = root->right;
-    //         } else {
-    //             TreeNode *p = root->left;
-    //             while (p->right && p->right != root) p = p->right;
-    //             if (!p->right) {
-    //                 p->right = root;
-    //                 root = root->left;
-    //             } else {
-    //                 p->right = nullptr;
-    //                 if (prep && prep->val > root->val) {
-    //                     if (!first) first = prep, second = root;
-    //                     else second = root;
-    //                 }
-    //                 prep = root;
-    //                 root = root->right;
-    //             }
-    //         }
-    //     }
-    //     swap(first->val, second->val);
-    // }
-
     void recoverTree(TreeNode* root) {
-        TreeNode *cur = root, *p = nullptr;
-        while (cur) {
-            if (!cur->left) {
-                cout << cur->val << endl;
-                cur = cur->right;
+        TreeNode *first = nullptr, *second, *prep = nullptr;
+        while (root) {
+            if (!root->left) {
+                if (prep && prep->val > root->val) {
+                    if (!first) first = prep, second = root;
+                    else second = root;
+                }
+                prep = root;
+                root = root->right;
             } else {
-                p = cur->left;
-                while (p->right && p->right != cur) p = p->right;
+                TreeNode *p = root->left;
+                while (p->right && p->right != root) p = p->right;
                 if (!p->right) {
-                    p->right = cur;
-                    cur = cur->left;
+                    p->right = root;
+                    root = root->left;
                 } else {
-                    cout << cur->val << endl;
                     p->right = nullptr;
-                    cur = cur->right;
+                    if (prep && prep->val > root->val) {
+                        if (!first) first = prep, second = root;
+                        else second = root;
+                    }
+                    prep = root;
+                    root = root->right;
                 }
             }
         }
+        swap(first->val, second->val);
     }
+
 };
 // @lc code=end
 
