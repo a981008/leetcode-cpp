@@ -28,11 +28,9 @@ public:
     // 用 -1 标记是否为平衡二叉树
     int dfs(TreeNode* root) {
         if (!root) return 0;
-        int left = dfs(root->left);
+        int left = dfs(root->left), right = dfs(root->right);
         // 子树中有一个不是平衡二叉树，整个树都不是平衡二叉树
-        if (left == -1) return -1; 
-        int right = dfs(root->right);
-        if (right == -1) return -1;
+        if (left == -1 || right == -1) return -1; 
         return abs(left - right) <= 1 ? max(left, right) + 1 : -1;
     }
 };
